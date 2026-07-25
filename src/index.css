@@ -1,0 +1,169 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", "Helvetica Neue", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Outfit", "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-neo-bg: var(--neo-bg, #F5F3ED);
+  --color-neo-bg-sec: var(--neo-bg-sec, #ECEADF);
+  --color-neo-primary: #6366F1;
+  --color-neo-secondary: #E11D48;
+  --color-neo-tertiary: #14B8A6;
+  --color-neo-border: var(--neo-border, #2D2331);
+  --color-neo-text: var(--neo-text, #2D2331);
+  --color-neo-card: var(--neo-card, #FFFFFF);
+  --color-neo-success: #14B8A6;
+  --color-neo-warning: #FCD34D;
+  --color-neo-danger: #E11D48;
+  
+  --shadow-neo: 6px 6px 0px var(--neo-border, #2D2331);
+  --shadow-neo-hover: 8px 8px 0px var(--neo-border, #2D2331);
+  --shadow-neo-btn: 4px 4px 0px var(--neo-border, #2D2331);
+  --shadow-neo-btn-press: 1px 1px 0px var(--neo-border, #2D2331);
+  
+  @keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+  @keyframes stripe-flow {
+    0% { background-position: 0 0; }
+    100% { background-position: 40px 0; }
+  }
+}
+
+@layer base {
+  html, body {
+    background-color: var(--neo-bg, #F5F3ED);
+    color: var(--neo-text, #2D2331);
+    transition: background-color 200ms ease, color 200ms ease;
+    min-height: 100vh;
+  }
+
+  :root {
+    --neo-bg: #F5F3ED;
+    --neo-bg-sec: #ECEADF;
+    --neo-border: #2D2331;
+    --neo-text: #2D2331;
+    --neo-card: #FFFFFF;
+    --neo-accent: #FFE600;
+    --neo-accent-text: #000000;
+    --scrollbar-color: rgba(45, 35, 49, 0.3);
+  }
+
+  .dark {
+    --neo-border: #FFFFFF;
+    --neo-text: #FFFFFF;
+    --neo-accent: #FFE600;
+    --neo-accent-text: #000000;
+    --scrollbar-color: rgba(255, 255, 255, 0.3);
+  }
+}
+
+/* Custom Accent Helper Classes */
+.bg-neo-accent {
+  background-color: var(--neo-accent, #FFE600) !important;
+  color: var(--neo-accent-text, #000000) !important;
+}
+
+.text-neo-accent {
+  color: var(--neo-accent, #FFE600) !important;
+}
+
+.border-neo-accent {
+  border-color: var(--neo-accent, #FFE600) !important;
+}
+
+/* Custom Neo-Brutalist Utility Classes */
+.neo-border {
+  border: 3px solid var(--neo-border);
+}
+
+.neo-border-thin {
+  border: 2px solid var(--neo-border);
+}
+
+.neo-card {
+  background-color: var(--neo-card);
+  border: 3px solid var(--neo-border);
+  box-shadow: 6px 6px 0px var(--neo-border);
+  transition: all 200ms ease;
+}
+
+.neo-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0px var(--neo-border);
+}
+
+.neo-btn {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  border: 3px solid var(--neo-border);
+  box-shadow: 4px 4px 0px var(--neo-border);
+  transition: all 150ms ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.neo-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0px #2D2331;
+}
+
+.neo-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px #2D2331;
+}
+
+/* Stripe Animated Progress Bar */
+.stripe-progress {
+  background-image: repeating-linear-gradient(
+    45deg,
+    #6366F1,
+    #6366F1 20px,
+    #E11D48 20px,
+    #E11D48 40px
+  );
+  background-size: 56.57px 40px;
+  animation: stripe-flow 1s linear infinite;
+}
+
+/* Custom Scrollbar - Smooth Overlay & Auto Hide */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 9999px;
+  transition: background-color 250ms ease-in-out;
+}
+
+/* Show scrollbar thumb when scrolling or hovering */
+html.is-scrolling ::-webkit-scrollbar-thumb,
+body.is-scrolling ::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-color, rgba(45, 35, 49, 0.3));
+}
+
+/* Font Smoothing & Core Classes */
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
