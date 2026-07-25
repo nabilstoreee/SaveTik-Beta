@@ -1,0 +1,18 @@
+{
+  "name": "SaveTik - Downloader Video & Audio HD",
+  "short_name": "SaveTik",
+  "description": "Download video TikTok tanpa watermark, MP3, YouTube & Instagram Reels secara instan",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F172A",
+  "theme_color": "#FFE600",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
